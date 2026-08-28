@@ -202,12 +202,12 @@ img { max-width: 100%; display: block; }
 
 /* topo-esquerda / baixo-direita reaproveitam as artes de topo-direita e
    baixo-esquerda espelhadas — mesmas peças, canto oposto */
-.floral-hero-tl   { top: 1.2rem;    left: 1.2rem;  width: clamp(220px, 21vw, 360px); transform: scaleX(-1); }
-.floral-hero-br   { bottom: 1.2rem; right: 1.2rem; width: clamp(220px, 21vw, 360px); transform: scaleX(-1); }
-.floral-historia  { top: 1rem;      right: 1rem;   width: clamp(130px, 13vw, 200px); }
-.floral-detalhes  { bottom: 1rem;   left: 1rem;    width: clamp(180px, 18vw, 300px); }
-.floral-galeria   { top: 1rem;      right: 1rem;   width: clamp(180px, 18vw, 300px); }
-.floral-rsvp      { bottom: 1rem;   left: 1rem;    width: clamp(180px, 18vw, 300px); }
+.floral-hero-tl   { top: 1.2rem;    left: 1.2rem;  width: clamp(260px, 25vw, 420px); transform: scaleX(-1); }
+.floral-hero-br   { bottom: 1.2rem; right: 1.2rem; width: clamp(260px, 25vw, 420px); transform: scaleX(-1); }
+.floral-historia  { top: 1rem;      right: 1rem;   width: clamp(160px, 16vw, 240px); }
+.floral-detalhes  { bottom: 1rem;   left: 1rem;    width: clamp(220px, 21vw, 360px); }
+.floral-galeria   { top: 1rem;      right: 1rem;   width: clamp(220px, 21vw, 360px); }
+.floral-rsvp      { bottom: 1rem;   left: 1rem;    width: clamp(220px, 21vw, 360px); }
 
 .floral-footer {
   position: relative;
@@ -219,7 +219,7 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 860px) {
-  .floral-hero-tl, .floral-hero-br { width: 150px; }
+  .floral-hero-tl, .floral-hero-br { width: 180px; }
   .floral-historia, .floral-detalhes, .floral-galeria, .floral-rsvp { display: none; }
   .floral-footer { width: 130px; }
 }
