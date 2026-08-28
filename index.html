@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Larissa &amp; Neto · 25.07.2027</title>
+<meta name="description" content="Convite de casamento de Larissa e Neto — 25 de julho de 2027, em Bom Despacho - MG. Confirme sua presença!" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%9B%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ===== ATMOSFERA CONTÍNUA (fixa atrás de todo o site) ===== -->
+<div class="atmosphere" aria-hidden="true">
+  <div class="blob atmo-1"></div>
+  <div class="blob atmo-2"></div>
+  <div class="blob atmo-3"></div>
+  <div class="blob atmo-4"></div>
+  <div class="blob atmo-5"></div>
+  <div class="blob atmo-6"></div>
+  <div class="blob atmo-7"></div>
+</div>
+
+<!-- ===== DEFINIÇÕES FLORAIS (reutilizadas em várias seções) ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="s-heart" viewBox="0 0 24 24">
+      <path d="M12 21s-7.5-4.6-10.2-9.3C.4 8.8 1.6 5 5.2 4.1c2-.5 4 .3 5.1 2 .9-1.6 2.9-2.5 5-2 3.6.9 4.8 4.7 3.4 7.6C19.5 16.4 12 21 12 21z"/>
+    </symbol>
+
+    <symbol id="s-pin" viewBox="0 0 40 52">
+      <path d="M20 2C10.6 2 3 9.6 3 19c0 12.7 17 31 17 31s17-18.3 17-31c0-9.4-7.6-17-17-17z"/>
+      <circle cx="20" cy="19" r="7" fill="#fff"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ===== NAV ===== -->
+<nav class="dot-nav" aria-label="Navegação do convite">
+  <a href="#hero" class="dot active" data-label="Início"></a>
+  <a href="#historia" class="dot" data-label="Nossa história"></a>
+  <a href="#detalhes" class="dot" data-label="Detalhes"></a>
+  <a href="#galeria" class="dot" data-label="Galeria"></a>
+  <a href="#confirmar" class="dot" data-label="Confirmar presença"></a>
+</nav>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+
+<div class="menu-overlay" id="menuOverlay">
+  <a href="#hero">Início</a>
+  <a href="#historia">Nossa história</a>
+  <a href="#detalhes">Detalhes</a>
+  <a href="#galeria">Galeria</a>
+  <a href="#confirmar">Confirmar presença</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<header id="hero" class="hero section">
+  <div class="floral floral-hero-tl">
+    <img src="assets/decor/floral-tr.png" alt="" />
+  </div>
+  <div class="floral floral-hero-br">
+    <img src="assets/decor/floral-bl.png" alt="" />
+  </div>
+
+  <div class="hero-photos" aria-hidden="true">
+    <figure class="photo-frame frame-blob-2 float-b">
+      <img src="assets/fotos/hero/foto-2.jpg" alt="" />
+      <figcaption class="photo-caption">
+        <span>📷</span>
+        <small>assets/fotos/hero/foto-2.jpg</small>
+      </figcaption>
+    </figure>
+    <figure class="photo-frame frame-blob-3 float-c">
+      <img src="assets/fotos/hero/foto-3.jpg" alt="" />
+      <figcaption class="photo-caption">
+        <span>📷</span>
+        <small>assets/fotos/hero/foto-3.jpg</small>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="hero-content">
+    <p class="eyebrow reveal">vamos nos casar</p>
+    <h1 class="hero-names reveal">Larissa <span class="amp">&amp;</span> Neto</h1>
+    <p class="hero-date reveal">25 de julho de 2027 · Bom Despacho, MG</p>
+    <a href="#confirmar" class="btn btn-primary reveal">Confirmar presença</a>
+  </div>
+
+  <a href="#contagem" class="scroll-cue" aria-label="Rolar para baixo">
+    <span></span>
+  </a>
+</header>
+
+<div class="divider" aria-hidden="true" style="--line-a: var(--amarelo); --line-b: var(--azul-claro);">
+  <span class="divider-line"></span>
+  <svg width="16" height="16"><use href="#s-heart" fill="var(--navy)"/></svg>
+  <span class="divider-line right"></span>
+</div>
+
+<!-- ===== CONTAGEM REGRESSIVA ===== -->
+<section id="contagem" class="countdown-section section-pad">
+  <p class="kicker reveal">falta pouco</p>
+  <h2 class="section-title reveal">Contagem regressiva para o grande dia</h2>
+  <div class="countdown reveal" id="countdown" data-target="2027-07-25T16:00:00-03:00">
+    <div class="count-box">
+      <span class="count-number" data-unit="dias">00</span>
+      <span class="count-label">dias</span>
+    </div>
+    <div class="count-box">
+      <span class="count-number" data-unit="horas">00</span>
+      <span class="count-label">horas</span>
+    </div>
+    <div class="count-box">
+      <span class="count-number" data-unit="minutos">00</span>
+      <span class="count-label">min</span>
+    </div>
+    <div class="count-box">
+      <span class="count-number" data-unit="segundos">00</span>
+      <span class="count-label">seg</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true" style="--line-a: var(--lilas); --line-b: var(--pessego);">
+  <span class="divider-line"></span>
+  <svg width="16" height="16"><use href="#s-heart" fill="var(--amarelo)"/></svg>
+  <span class="divider-line right"></span>
+</div>
+
+<!-- ===== NOSSA HISTÓRIA ===== -->
+<section id="historia" class="historia section-pad">
+  <div class="floral floral-historia">
+    <img src="assets/decor/floral-cr.png" alt="" />
+  </div>
+
+  <div class="historia-grid">
+    <figure class="photo-frame frame-blob-main reveal">
+      <img src="assets/fotos/casal/principal.jpg" alt="Larissa e Neto" loading="lazy" />
+      <figcaption class="photo-caption">
+        <span>📷</span>
+        <small>assets/fotos/casal/principal.jpg</small>
+      </figcaption>
+    </figure>
+
+    <div class="historia-text">
+      <p class="kicker reveal">nossa história</p>
+      <h2 class="section-title reveal">De um encontro a um "sim"</h2>
+      <p class="reveal">
+        Aqui vocês podem contar, com carinho, como tudo começou — o primeiro encontro,
+        o pedido, os pequenos detalhes que fizeram esse amor crescer até chegar até aqui.
+        Edite este texto com a história de vocês dois. 💛
+      </p>
+      <p class="reveal">
+        E agora, depois de tantos capítulos escritos juntos, chegou a hora de começar um
+        novo: a vida de casados. E não poderíamos imaginar essa próxima página sem
+        vocês por perto.
+      </p>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <figure class="photo-frame frame-blob-sm">
+        <img src="assets/fotos/casal/momento-1.jpg" alt="" loading="lazy" />
+        <figcaption class="photo-caption"><span>📷</span><small>assets/fotos/casal/momento-1.jpg</small></figcaption>
+      </figure>
+      <p class="timeline-caption">O primeiro encontro</p>
+    </div>
+    <div class="timeline-item reveal">
+      <figure class="photo-frame frame-blob-sm">
+        <img src="assets/fotos/casal/momento-2.jpg" alt="" loading="lazy" />
+        <figcaption class="photo-caption"><span>📷</span><small>assets/fotos/casal/momento-2.jpg</small></figcaption>
+      </figure>
+      <p class="timeline-caption">A primeira viagem</p>
+    </div>
+    <div class="timeline-item reveal">
+      <figure class="photo-frame frame-blob-sm">
+        <img src="assets/fotos/casal/momento-3.jpg" alt="" loading="lazy" />
+        <figcaption class="photo-caption"><span>📷</span><small>assets/fotos/casal/momento-3.jpg</small></figcaption>
+      </figure>
+      <p class="timeline-caption">O pedido</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true" style="--line-a: var(--rosa); --line-b: var(--azul-claro);">
+  <span class="divider-line"></span>
+  <svg width="16" height="16"><use href="#s-heart" fill="var(--lilas)"/></svg>
+  <span class="divider-line right"></span>
+</div>
+
+<!-- ===== DETALHES ===== -->
+<section id="detalhes" class="detalhes section-pad">
+  <div class="floral floral-detalhes">
+    <img src="assets/decor/floral-bl.png" alt="" />
+  </div>
+
+  <p class="kicker reveal">detalhes do grande dia</p>
+  <h2 class="section-title reveal">Onde e quando celebrar com a gente</h2>
+
+  <div class="detalhes-grid">
+    <div class="detalhe-card c-rosa reveal">
+      <div class="detalhe-icon">💍</div>
+      <h3>Cerimônia</h3>
+      <p class="detalhe-data">25 de julho de 2027 · 16h</p>
+      <p>[Nome do local da cerimônia]<br />Bom Despacho - MG</p>
+      <a href="#mapa" class="link-mapa">Ver no mapa →</a>
+    </div>
+
+    <div class="detalhe-card c-azul reveal">
+      <div class="detalhe-icon">🥂</div>
+      <h3>Recepção</h3>
+      <p class="detalhe-data">Em seguida · 18h</p>
+      <p>[Nome do local da recepção]<br />Bom Despacho - MG</p>
+      <a href="#mapa" class="link-mapa">Ver no mapa →</a>
+    </div>
+
+    <div class="detalhe-card c-amarelo reveal">
+      <div class="detalhe-icon">👗</div>
+      <h3>Traje</h3>
+      <p class="detalhe-data">Esporte fino</p>
+      <p>Capriche no look! Sugerimos tons pastéis para combinar com a nossa festa.</p>
+    </div>
+  </div>
+
+  <div class="map-block reveal">
+    <p class="kicker">como chegar</p>
+    <h3 class="map-title">Bom Despacho — MG</h3>
+    <p class="map-sub">Arraste, dê zoom e explore o mapa abaixo. O endereço exato do local será atualizado aqui assim que estiver confirmado.</p>
+    <div class="map-wrap">
+      <div id="mapa" role="application" aria-label="Mapa interativo de Bom Despacho, Minas Gerais"></div>
+      <div class="map-hint" id="mapHint">🔍 Toque para interagir com o mapa</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true" style="--line-a: var(--amarelo); --line-b: var(--lilas);">
+  <span class="divider-line"></span>
+  <svg width="16" height="16"><use href="#s-heart" fill="var(--azul-claro)"/></svg>
+  <span class="divider-line right"></span>
+</div>
+
+<!-- ===== GALERIA ===== -->
+<section id="galeria" class="galeria section-pad">
+  <div class="floral floral-galeria">
+    <img src="assets/decor/floral-tr.png" alt="" />
+  </div>
+
+  <p class="kicker reveal">registros</p>
+  <h2 class="section-title reveal">Nossa galeria de fotos</h2>
+
+  <div class="galeria-grid">
+    <figure class="photo-frame g-frame g-blob-1 reveal">
+      <img src="assets/fotos/galeria/01.jpg" alt="" loading="lazy" />
+      <figcaption class="photo-caption"><span>📷</span><small>assets/fotos/galeria/01.jpg</small></figcaption>
+    </figure>
+    <figure class="photo-frame g-frame g-blob-2 reveal">
+      <img src="assets/fotos/galeria/02.jpg" alt="" loading="lazy" />
+      <figcaption class="photo-caption"><span>📷</span><small>assets/fotos/galeria/02.jpg</small></figcaption>
+    </figure>
+    <figure class="photo-frame g-frame g-blob-3 reveal">
+      <img src="assets/fotos/galeria/03.jpg" alt="" loading="lazy" />
+      <figcaption class="photo-caption"><span>📷</span><small>assets/fotos/galeria/03.jpg</small></figcaption>
+    </figure>
+    <figure class="photo-frame g-frame g-blob-4 reveal">
+      <img src="assets/fotos/galeria/04.jpg" alt="" loading="lazy" />
+      <figcaption class="photo-caption"><span>📷</span><small>assets/fotos/galeria/04.jpg</small></figcaption>
+    </figure>
+    <figure class="photo-frame g-frame g-blob-5 reveal">
+      <img src="assets/fotos/galeria/05.jpg" alt="" loading="lazy" />
+      <figcaption class="photo-caption"><span>📷</span><small>assets/fotos/galeria/05.jpg</small></figcaption>
+    </figure>
+    <figure class="photo-frame g-frame g-blob-6 reveal">
+      <img src="assets/fotos/galeria/06.jpg" alt="" loading="lazy" />
+      <figcaption class="photo-caption"><span>📷</span><small>assets/fotos/galeria/06.jpg</small></figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true" style="--line-a: var(--pessego); --line-b: var(--rosa);">
+  <span class="divider-line"></span>
+  <svg width="16" height="16"><use href="#s-heart" fill="var(--pessego)"/></svg>
+  <span class="divider-line right"></span>
+</div>
+
+<!-- ===== RSVP / CONFIRMAÇÃO ===== -->
+<section id="confirmar" class="rsvp section-pad">
+  <div class="floral floral-rsvp">
+    <img src="assets/decor/floral-bl.png" alt="" />
+  </div>
+
+  <p class="kicker reveal">contamos com você</p>
+  <h2 class="section-title reveal">Confirme sua presença</h2>
+  <p class="rsvp-sub reveal">Por favor, confirme até 25 de junho de 2027.</p>
+  <p class="rsvp-note reveal">💌 Convite individual — cada pessoa querida recebe o seu próprio, então não é possível incluir acompanhantes.</p>
+
+  <form id="rsvpForm" class="rsvp-form reveal" novalidate>
+    <!--
+      TODO (fase de integração com Google Forms):
+      1. Trocar o "action" abaixo pela URL .../formResponse do Google Forms.
+      2. Trocar os atributos "name" dos campos pelos "entry.XXXXXXXXX" reais do formulário
+         (incluindo o campo oculto de coordenadas, no fim do formulário).
+      3. Enviar via fetch(action, { method: "POST", mode: "no-cors", body: formData }).
+      Por enquanto o envio é simulado localmente (ver js/main.js).
+    -->
+    <div class="field">
+      <label for="nome">Nome completo</label>
+      <input type="text" id="nome" name="entry.nome" placeholder="Seu nome" required />
+    </div>
+
+    <div class="field">
+      <label for="cidade">Cidade onde mora</label>
+      <input type="text" id="cidade" name="entry.cidade" placeholder="Ex: Belo Horizonte, MG" autocomplete="address-level2" />
+    </div>
+
+    <div class="field">
+      <label for="presenca">Você vai comparecer?</label>
+      <select id="presenca" name="entry.presenca" required>
+        <option value="" disabled selected>Selecione uma opção</option>
+        <option value="sim">Sim, estarei lá! 🎉</option>
+        <option value="nao">Não poderei ir 😔</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="restricao">Alguma restrição alimentar?</label>
+      <input type="text" id="restricao" name="entry.restricao" placeholder="Ex: vegetariano, alergias, etc. (opcional)" />
+    </div>
+
+    <div class="field">
+      <label for="mensagem">Deixe uma mensagem para os noivos</label>
+      <textarea id="mensagem" name="entry.mensagem" rows="3" placeholder="Escreva algo com carinho... (opcional)"></textarea>
+    </div>
+
+    <!-- coordenadas aproximadas, preenchidas automaticamente via IP (sem pedir permissão de localização ao navegador) -->
+    <input type="hidden" id="geoCoordenadas" name="entry.coordenadas" value="" />
+
+    <button type="submit" class="btn btn-primary btn-block">Enviar confirmação</button>
+
+    <p class="rsvp-privacy">📍 Preenchemos "Cidade onde mora" automaticamente com base na sua localização aproximada — pode corrigir à vontade antes de enviar.</p>
+
+    <p class="form-feedback" id="formFeedback" role="status" aria-live="polite"></p>
+  </form>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="floral floral-footer">
+    <img src="assets/decor/floral-small-centralized.png" alt="" />
+  </div>
+  <p class="footer-monogram">L <span class="amp">&amp;</span> N</p>
+  <p class="footer-hashtag">#LarissaENeto2027</p>
+  <p class="footer-note">Feito com muito amor para o nosso grande dia 💛</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>
