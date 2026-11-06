@@ -68,6 +68,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
   revealEls.forEach((el) => revealObserver.observe(el));
 
+  // ---- Pedido de casamento: fotos em sequência ------------------------------
+  const proposalShow = document.querySelector('[data-proposal-show]');
+  if (proposalShow) {
+    const slides = [...proposalShow.querySelectorAll('.proposal-slide')];
+    const progress = [...proposalShow.querySelectorAll('.proposal-progress span')];
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (slides.length > 1 && !reduceMotion) {
+      let activeIndex = 0;
+      let intervalId;
+
+      const showNextSlide = () => {
+        slides[activeIndex].classList.remove('is-active');
+        slides[activeIndex].setAttribute('aria-hidden', 'true');
+        progress[activeIndex].classList.remove('is-active');
+
+        activeIndex = (activeIndex + 1) % slides.length;
+
+        slides[activeIndex].classList.add('is-active');
+        slides[activeIndex].removeAttribute('aria-hidden');
+        progress[activeIndex].classList.add('is-active');
+      };
+
+      const startShow = () => {
+        if (!intervalId) intervalId = window.setInterval(showNextSlide, 5200);
+      };
+
+      const stopShow = () => {
+        window.clearInterval(intervalId);
+        intervalId = undefined;
+      };
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stopShow();
+        else startShow();
+      });
+
+      startShow();
+    }
+  }
+
   // ---- Dot nav scroll spy -----------------------------------
   const sections = document.querySelectorAll('section[id], header[id]');
   const dots = document.querySelectorAll('.dot-nav .dot');
