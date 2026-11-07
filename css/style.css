@@ -660,23 +660,40 @@ img { max-width: 100%; display: block; }
 .detalhe-card.c-amarelo { background: linear-gradient(180deg, rgba(246,217,140,0.2), #fff 45%); }
 
 .detalhe-icon {
-  font-size: 1.7rem;
   margin: 0 auto 0.9rem;
-  width: 56px;
-  height: 56px;
+  width: 136px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
 }
 
-.detalhe-card.c-rosa .detalhe-icon { background: var(--rosa); }
-.detalhe-card.c-azul .detalhe-icon { background: var(--azul-claro); }
-.detalhe-card.c-amarelo .detalhe-icon { background: var(--amarelo); }
+.detalhe-watercolor img { width: 100%; height: 100%; object-fit: contain; transform: scale(1.18); }
 
 .detalhe-card h3 { margin-bottom: 0.3rem; }
 .venue-address { line-height: 1.55; }
 .venue-address strong { color: var(--navy); font-weight: 500; }
+
+.clima-reference {
+  max-width: 62rem;
+  margin: 3.5rem auto 0;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(30,43,74,0.12);
+  border-bottom: 1px solid rgba(30,43,74,0.12);
+  text-align: center;
+}
+
+.clima-heading .kicker { margin-bottom: 0.4rem; }
+.clima-heading h3 { margin-bottom: 0.7rem; font-size: 1.3rem; }
+.clima-times { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.clima-time { display: grid; justify-items: center; gap: 0.2rem; padding: 0.6rem 1rem; }
+.clima-time + .clima-time { border-left: 1px solid rgba(30,43,74,0.12); }
+.clima-hour { color: var(--navy-soft); font-size: 0.82rem; font-weight: 500; }
+.clima-time strong { color: var(--navy); font-family: var(--font-display); font-size: 1.85rem; font-weight: 500; line-height: 1.2; }
+.clima-time strong small { font-family: var(--font-body); font-size: 0.68rem; font-weight: 400; }
+.clima-time > span:last-child { color: var(--texto-suave); font-size: 0.8rem; }
+.clima-note { margin: 1rem 0 0.25rem; color: var(--texto-suave); font-size: 0.78rem; }
+.clima-source { color: var(--navy); font-size: 0.78rem; text-decoration: underline; text-underline-offset: 3px; }
 
 .detalhe-data {
   color: var(--pessego);
@@ -695,6 +712,16 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 860px) {
   .detalhes-grid { grid-template-columns: 1fr; }
+  .logistica-content { grid-template-columns: 1fr; }
+  .logistica-item { padding: 1.4rem 0.4rem; }
+  .logistica-item + .logistica-item { border-left: 0; border-top: 1px solid rgba(30,43,74,0.14); }
+}
+
+@media (max-width: 520px) {
+  .clima-reference { margin-top: 2.5rem; padding: 1.5rem 0; }
+  .clima-time { padding-inline: 0.4rem; }
+  .clima-time strong { font-size: 1.55rem; }
+  .clima-time > span:last-child { font-size: 0.7rem; }
 }
 
 /* ===== mapa interativo ===== */
@@ -719,6 +746,39 @@ img { max-width: 100%; display: block; }
 }
 
 .directions-link { margin-top: 1.2rem; }
+
+.logistica {
+  background: linear-gradient(135deg, rgba(166,204,236,0.12), rgba(244,174,192,0.12));
+}
+
+.logistica-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 62rem;
+  margin: 0 auto;
+  border-top: 1px solid rgba(30,43,74,0.14);
+  border-bottom: 1px solid rgba(30,43,74,0.14);
+}
+
+.logistica-item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1rem;
+  align-content: start;
+  padding: 1.8rem 2rem;
+}
+
+.logistica-item + .logistica-item { border-left: 1px solid rgba(30,43,74,0.14); }
+.logistica-index { color: var(--pessego); font-family: var(--font-display); font-size: 1.45rem; line-height: 1.2; }
+.logistica-item h3 { margin: 0 0 0.6rem; font-size: 1.2rem; }
+.logistica-item p { margin: 0 0 0.7rem; color: var(--texto-suave); font-size: 0.94rem; }
+.logistica-item p:last-child { margin-bottom: 0; }
+
+@media (max-width: 860px) {
+  .logistica-content { grid-template-columns: 1fr; }
+  .logistica-item { padding: 1.4rem 0.4rem; }
+  .logistica-item + .logistica-item { border-left: 0; border-top: 1px solid rgba(30,43,74,0.14); }
+}
 
 .map-wrap {
   position: relative;
@@ -814,7 +874,7 @@ img { max-width: 100%; display: block; }
 
 .photo-strip { padding-top: 3rem; padding-bottom: 3rem; }
 .g-frame { width: 100%; aspect-ratio: 4 / 5; }
-.current-spread { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.current-spread { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 52rem; }
 .proposal-strip { padding-block: 4rem; background: var(--navy); }
 .proposal-show {
   position: relative;
@@ -1013,6 +1073,35 @@ img { max-width: 100%; display: block; }
   outline: none;
   border-color: var(--pessego);
   box-shadow: 0 0 0 4px rgba(243,174,131,0.18);
+}
+
+.location-input-row { display: flex; align-items: stretch; gap: 0.55rem; }
+.location-input-row input { min-width: 0; }
+.location-button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid rgba(30,43,74,0.2);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--navy);
+  font: 500 0.82rem var(--font-body);
+  cursor: pointer;
+}
+
+.location-button span:first-child { font-size: 1.15rem; line-height: 1; }
+.location-button:hover { border-color: var(--pessego); background: rgba(243,174,131,0.12); }
+.location-button:disabled { cursor: wait; opacity: 0.65; }
+.location-button:focus-visible { outline: 3px solid rgba(243,174,131,0.5); outline-offset: 2px; }
+.location-status { min-height: 1.25em; margin: 0.35rem 0 0; color: var(--texto-suave); font-size: 0.78rem; line-height: 1.4; }
+
+@media (max-width: 420px) {
+  .location-input-row { flex-wrap: wrap; }
+  .location-input-row input { flex: 1 1 100%; }
+  .location-button { min-height: 42px; }
 }
 
 .rsvp-privacy {

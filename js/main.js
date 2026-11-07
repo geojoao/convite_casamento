@@ -163,34 +163,128 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ---- Localização automática do convidado -----------------------------------
-  // Usa geolocalização por IP (sem pedir permissão do navegador) para sugerir a
-  // cidade e guardar coordenadas aproximadas, úteis para um relatório de onde
-  // vêm os convidados. O campo de cidade continua editável a qualquer momento.
   const cidadeInput = document.getElementById('cidade');
   const coordenadasField = document.getElementById('geoCoordenadas');
+  const locationButton = document.getElementById('useCurrentLocation');
+  const locationStatus = document.getElementById('locationStatus');
 
   if (cidadeInput) {
     let cidadeEditadaPeloUsuario = false;
-    cidadeInput.addEventListener('input', () => { cidadeEditadaPeloUsuario = true; }, { once: true });
+    let localizacaoDoDispositivoAplicada = false;
+    cidadeInput.addEventListener('input', () => { cidadeEditadaPeloUsuario = true; });
 
-    fetch('https://ipapi.co/json/')
-      .then((res) => res.json())
-      .then((data) => {
-        if (!data || data.error) return;
+    const fetchJson = async (url, timeoutMs = 5000) => {
+      const controller = new AbortController();
+      const timeoutId = window.setTimeout(() => controller.abort(), timeoutMs);
+      try {
+        const response = await fetch(url, { signal: controller.signal, cache: 'no-store' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return await response.json();
+      } finally {
+        window.clearTimeout(timeoutId);
+      }
+    };
 
-        if (!cidadeEditadaPeloUsuario && !cidadeInput.value) {
-          const partes = [data.city, data.region_code || data.region].filter(Boolean);
-          cidadeInput.value = partes.join(', ');
+    const applyLocation = ({ city, region, latitude, longitude }, message, fromDevice = false) => {
+      if (localizacaoDoDispositivoAplicada && !fromDevice) return;
+      if (fromDevice) localizacaoDoDispositivoAplicada = true;
+
+      if (!cidadeEditadaPeloUsuario && city && (fromDevice || !cidadeInput.value.trim())) {
+        cidadeInput.value = [city, region].filter(Boolean).join(', ');
+      }
+
+      if (coordenadasField && Number.isFinite(latitude) && Number.isFinite(longitude)) {
+        coordenadasField.value = `${latitude}, ${longitude}`;
+      }
+
+      if (locationStatus) locationStatus.textContent = message;
+    };
+
+    const ipLocationProviders = [
+      async () => {
+        const data = await fetchJson('https://ipapi.co/json/');
+        if (!data || data.error || !data.city) throw new Error('ipapi indisponível');
+        return {
+          city: data.city,
+          region: data.region_code || data.region,
+          latitude: Number(data.latitude),
+          longitude: Number(data.longitude),
+        };
+      },
+      async () => {
+        const data = await fetchJson('https://ipwho.is/');
+        if (!data || !data.success || !data.city) throw new Error('ipwho indisponível');
+        return {
+          city: data.city,
+          region: data.region,
+          latitude: Number(data.latitude),
+          longitude: Number(data.longitude),
+        };
+      },
+    ];
+
+    const suggestLocationByIp = async () => {
+      for (const getLocation of ipLocationProviders) {
+        try {
+          const location = await getLocation();
+          applyLocation(location, 'Cidade sugerida pela rede. Você pode corrigir antes de enviar.');
+          return;
+        } catch {
+          // Tenta outro provedor se o primeiro estiver bloqueado ou indisponível.
+        }
+      }
+
+      if (locationStatus) {
+        locationStatus.textContent = 'Não foi possível sugerir sua cidade. Preencha o campo ou use o GPS.';
+      }
+    };
+
+    if (locationButton) {
+      locationButton.addEventListener('click', () => {
+        if (!navigator.geolocation) {
+          if (locationStatus) locationStatus.textContent = 'Este navegador não oferece localização por GPS.';
+          return;
         }
 
-        if (coordenadasField && data.latitude && data.longitude) {
-          coordenadasField.value = `${data.latitude}, ${data.longitude}`;
-        }
-      })
-      .catch(() => {
-        // sem internet, serviço fora do ar, bloqueado por extensão etc.
-        // não é crítico — o convidado preenche a cidade manualmente.
+        locationButton.disabled = true;
+        if (locationStatus) locationStatus.textContent = 'Aguardando autorização de localização…';
+
+        navigator.geolocation.getCurrentPosition(async ({ coords }) => {
+          const latitude = coords.latitude;
+          const longitude = coords.longitude;
+          let city = '';
+          let region = '';
+
+          try {
+            const params = new URLSearchParams({
+              latitude: String(latitude),
+              longitude: String(longitude),
+              localityLanguage: 'pt',
+            });
+            const address = await fetchJson(`https://api.bigdatacloud.net/data/reverse-geocode-client?${params}`);
+            city = address.city || address.locality || '';
+            region = address.principalSubdivision || '';
+          } catch {
+            // Guarda as coordenadas mesmo se o serviço de cidade falhar.
+          }
+
+          applyLocation(
+            { city, region, latitude, longitude },
+            city ? 'Localização do celular aplicada.' : 'GPS localizado; não identificamos a cidade. Preencha o campo manualmente.',
+            true
+          );
+          locationButton.disabled = false;
+        }, (error) => {
+          const message = error.code === error.PERMISSION_DENIED
+            ? 'Permissão negada. Autorize a localização nas configurações do navegador ou preencha manualmente.'
+            : 'Não foi possível obter o GPS. Confira a permissão e tente novamente.';
+          if (locationStatus) locationStatus.textContent = message;
+          locationButton.disabled = false;
+        }, { enableHighAccuracy: false, timeout: 12000, maximumAge: 300000 });
       });
+    }
+
+    suggestLocationByIp();
   }
 
   // ---- Mapa interativo (Chácara da Vó Elo, Bom Despacho - MG) ----------------

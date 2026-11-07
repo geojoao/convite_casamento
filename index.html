@@ -49,6 +49,7 @@
   <a href="#hero" class="dot active" data-label="Início"></a>
   <a href="#fotos" class="dot" data-label="Fotos"></a>
   <a href="#detalhes" class="dot" data-label="Detalhes"></a>
+  <a href="#logistica" class="dot" data-label="Logística"></a>
   <a href="#confirmar" class="dot" data-label="Confirmar presença"></a>
 </nav>
 
@@ -60,6 +61,7 @@
   <a href="#hero">Início</a>
   <a href="#fotos">Fotos</a>
   <a href="#detalhes">Detalhes</a>
+  <a href="#logistica">Logística</a>
   <a href="#confirmar">Confirmar presença</a>
 </div>
 
@@ -196,9 +198,6 @@
 
 <section class="photo-strip section-pad" aria-label="Fotos atuais de Larissa e Neto">
   <div class="photo-spread current-spread">
-    <figure class="photo-frame g-frame g-blob-1 reveal">
-      <img src="assets/fotos/casal/foto-01.jpeg" alt="Larissa e Neto em um retrato preto e branco" loading="lazy" />
-    </figure>
     <figure class="photo-frame g-frame g-blob-2 reveal">
       <img src="assets/fotos/casal/foto-02.jpeg" alt="Larissa e Neto em um retrato atual" loading="lazy" />
     </figure>
@@ -210,9 +209,6 @@
     </figure>
     <figure class="photo-frame g-frame g-blob-3 reveal">
       <img src="assets/fotos/casal/foto-08.jpeg" alt="Larissa e Neto em um retrato atual" loading="lazy" />
-    </figure>
-    <figure class="photo-frame g-frame g-blob-4 reveal">
-      <img src="assets/fotos/casal/casal-recente.jpeg" alt="Larissa e Neto juntos em um passeio" loading="lazy" />
     </figure>
   </div>
 </section>
@@ -234,7 +230,7 @@
 
   <div class="detalhes-grid">
     <div class="detalhe-card c-rosa reveal">
-      <div class="detalhe-icon">💍</div>
+      <div class="detalhe-icon detalhe-watercolor" aria-hidden="true"><img src="assets/decor/floral-small-centralized.png" alt="" /></div>
       <h3>Cerimônia</h3>
       <p class="detalhe-data">25 de julho de 2027 · 16h</p>
       <p class="venue-address"><strong>Chácara da Vó Elo</strong><br />Chácara 48, Alameda dos Jequitibás<br />Condomínio Pica-Pau II, Belvedere<br />Bom Despacho - MG · 35633-128</p>
@@ -242,7 +238,7 @@
     </div>
 
     <div class="detalhe-card c-azul reveal">
-      <div class="detalhe-icon">🥂</div>
+      <div class="detalhe-icon detalhe-watercolor" aria-hidden="true"><img src="assets/decor/floral-small-centralized.png" alt="" /></div>
       <h3>Recepção</h3>
       <p class="detalhe-data">Em seguida · 18h</p>
       <p class="venue-address"><strong>Chácara da Vó Elo</strong><br />Chácara 48, Alameda dos Jequitibás<br />Condomínio Pica-Pau II, Belvedere<br />Bom Despacho - MG · 35633-128</p>
@@ -250,12 +246,34 @@
     </div>
 
     <div class="detalhe-card c-amarelo reveal">
-      <div class="detalhe-icon">👗</div>
+      <div class="detalhe-icon detalhe-watercolor" aria-hidden="true"><img src="assets/decor/floral-small-centralized.png" alt="" /></div>
       <h3>Traje</h3>
       <p class="detalhe-data">Esporte fino</p>
       <p>Capriche no look! Sugerimos tons pastéis para combinar com a nossa festa.</p>
     </div>
   </div>
+
+  <section class="clima-reference reveal" aria-labelledby="clima-title">
+    <div class="clima-heading">
+      <p class="kicker">para se programar</p>
+      <h3 id="clima-title">Temperatura típica · 25 de julho</h3>
+    </div>
+    <div class="clima-times">
+      <div class="clima-time">
+        <span class="clima-hour">16h · cerimônia</span>
+        <strong>25,2°C <small>média</small></strong>
+        <span>mínima histórica: 24,0°C</span>
+      </div>
+      <div class="clima-time">
+        <span class="clima-hour">18h · recepção</span>
+        <strong>22,9°C <small>média</small></strong>
+        <span>mínima histórica: 21,6°C</span>
+      </div>
+    </div>
+    <p class="clima-note">Até 22h, a média histórica cai para 18,3°C; a mínima observada foi 15,8°C. À noite, vento médio de 8 km/h, com rajadas perto de 15 km/h: leve um agasalho.</p>
+    <p class="clima-note">Referência de 11 datas (2015–2025), não é previsão para 2027.</p>
+    <a class="clima-source" href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">Fonte: Open-Meteo · ERA5-Land (temperatura) e ERA5 (vento) ↗</a>
+  </section>
 
   <div class="map-block reveal">
     <p class="kicker">como chegar</p>
@@ -266,6 +284,29 @@
       <div class="map-hint" id="mapHint">🔍 Toque para interagir com o mapa</div>
     </div>
     <a class="link-mapa directions-link" href="https://www.google.com/maps/search/?api=1&amp;query=Ch%C3%A1cara%20da%20V%C3%B3%20Elo%2C%20Ch%C3%A1cara%2048%2C%20Alameda%20dos%20Jequitib%C3%A1s%2C%20Condom%C3%ADnio%20Pica-Pau%20II%2C%20Bom%20Despacho%2C%20MG" target="_blank" rel="noopener noreferrer">Abrir endereço no Google Maps ↗</a>
+  </div>
+</section>
+
+<section id="logistica" class="logistica section-pad" aria-labelledby="logistica-title">
+  <p class="kicker reveal">para quem vem de longe</p>
+  <h2 class="section-title reveal" id="logistica-title">Vamos organizar a chegada juntos</h2>
+
+  <div class="logistica-content">
+    <div class="logistica-item reveal">
+      <span class="logistica-index" aria-hidden="true">01</span>
+      <div>
+        <h3>Do Pará ou do Ceará</h3>
+        <p>Uma opção é voar até Belo Horizonte, pelo Aeroporto de Confins (CNF). De lá, Bom Despacho fica a algumas horas por estrada.</p>
+        <p>Mais perto da data, vamos organizar grupos para buscar os convidados no aeroporto ou combinar aluguel de carros para seguirmos juntos até a cidade.</p>
+      </div>
+    </div>
+    <div class="logistica-item reveal">
+      <span class="logistica-index" aria-hidden="true">02</span>
+      <div>
+        <h3>Hospedagem</h3>
+        <p>Bom Despacho tem opções de hotéis. Ainda vamos verificar disponibilidade e compartilhar sugestões para o fim de semana do casamento.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -284,7 +325,7 @@
 
   <p class="kicker reveal">contamos com você</p>
   <h2 class="section-title reveal">Confirme sua presença</h2>
-  <p class="rsvp-sub reveal">Por favor, confirme até 25 de junho de 2027.</p>
+  <p class="rsvp-sub reveal">Por favor, confirme até 25 de fevereiro de 2027.</p>
   <p class="rsvp-note reveal">💌 Convite individual — cada pessoa querida recebe o seu próprio, então não é possível incluir acompanhantes.</p>
 
   <form id="rsvpForm" class="rsvp-form reveal" novalidate>
@@ -303,7 +344,14 @@
 
     <div class="field">
       <label for="cidade">Cidade onde mora</label>
-      <input type="text" id="cidade" name="entry.cidade" placeholder="Ex: Belo Horizonte, MG" autocomplete="address-level2" />
+      <div class="location-input-row">
+        <input type="text" id="cidade" name="entry.cidade" placeholder="Ex: Belo Horizonte, MG" autocomplete="address-level2" />
+        <button type="button" class="location-button" id="useCurrentLocation" aria-label="Usar localização atual do celular" title="Usar localização atual">
+          <span aria-hidden="true">⌖</span>
+          <span>Usar GPS</span>
+        </button>
+      </div>
+      <p class="location-status" id="locationStatus" role="status" aria-live="polite"></p>
     </div>
 
     <div class="field">
@@ -325,12 +373,12 @@
       <textarea id="mensagem" name="entry.mensagem" rows="3" placeholder="Escreva algo com carinho... (opcional)"></textarea>
     </div>
 
-    <!-- coordenadas aproximadas, preenchidas automaticamente via IP (sem pedir permissão de localização ao navegador) -->
+    <!-- Coordenadas aproximadas por IP ou localização precisa após autorização. -->
     <input type="hidden" id="geoCoordenadas" name="entry.coordenadas" value="" />
 
     <button type="submit" class="btn btn-primary btn-block">Enviar confirmação</button>
 
-    <p class="rsvp-privacy">📍 Preenchemos "Cidade onde mora" automaticamente com base na sua localização aproximada — pode corrigir à vontade antes de enviar.</p>
+    <p class="rsvp-privacy">📍 Sugerimos sua cidade automaticamente. Se não aparecer, toque em “Usar GPS” e permita a localização; você também pode preencher manualmente.</p>
 
     <p class="form-feedback" id="formFeedback" role="status" aria-live="polite"></p>
   </form>
@@ -343,7 +391,6 @@
   </div>
   <p class="footer-monogram">L <span class="amp">&amp;</span> N</p>
   <p class="footer-hashtag">#LarissaENeto2027</p>
-  <p class="footer-note">Feito com muito amor para o nosso grande dia 💛</p>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
