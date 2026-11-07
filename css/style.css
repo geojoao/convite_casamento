@@ -810,11 +810,7 @@ img { max-width: 100%; display: block; }
 
 .photo-strip { padding-top: 3rem; padding-bottom: 3rem; }
 .g-frame { width: 100%; aspect-ratio: 4 / 5; }
-.current-spread > :last-child:nth-child(5) {
-  grid-column: 2 / span 2;
-  width: calc((100% - var(--photo-gap)) / 2);
-  justify-self: center;
-}
+.current-spread { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .proposal-strip { padding-block: 4rem; background: var(--navy); }
 .proposal-show {
   position: relative;
@@ -890,13 +886,9 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 860px) {
   .photo-spread { grid-template-columns: repeat(2, minmax(0, 1fr)); --photo-gap: 1rem; }
-  .current-spread > :last-child:nth-child(5) {
-    grid-column: 1 / -1;
-    width: calc((100% - var(--photo-gap)) / 2);
-  }
-  .hero-photos .photo-frame { display: block; width: 82px; min-width: 82px; }
-  .frame-blob-2 { bottom: 11%; left: 3%; }
-  .frame-blob-3 { top: 11%; right: 3%; }
+  .hero-photos .photo-frame { display: block; width: clamp(104px, 30vw, 126px); min-width: 0; }
+  .hero-photos .frame-blob-2 { bottom: 9%; left: 4%; }
+  .hero-photos .frame-blob-3 { top: 9%; right: 4%; }
 }
 
 @media (max-width: 520px) {
