@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
-  // ---- Mapa interativo (Bom Despacho - MG) -----------------------------------
+  // ---- Mapa interativo (Chácara da Vó Elo, Bom Despacho - MG) ----------------
   const mapEl = document.getElementById('mapa');
   const mapHint = document.getElementById('mapHint');
 
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mapEl.innerHTML =
       '<div class="map-fallback">' +
       '<p>Não foi possível carregar o mapa interativo agora' + (motivo ? ' (' + motivo + ')' : '') + '.</p>' +
-      '<a href="https://www.openstreetmap.org/search?query=Bom%20Despacho%2C%20MG" target="_blank" rel="noopener">Ver Bom Despacho, MG no OpenStreetMap ↗</a>' +
+      '<a href="https://www.google.com/maps/search/?api=1&query=Ch%C3%A1cara%20da%20V%C3%B3%20Elo%2C%20Ch%C3%A1cara%2048%2C%20Alameda%20dos%20Jequitib%C3%A1s%2C%20Condom%C3%ADnio%20Pica-Pau%20II%2C%20Bom%20Despacho%2C%20MG" target="_blank" rel="noopener noreferrer">Abrir Chácara da Vó Elo no Google Maps ↗</a>' +
       '</div>';
   }
 
@@ -213,8 +213,8 @@ document.addEventListener('DOMContentLoaded', () => {
       showMapFallback('sem conexão com o serviço de mapas');
     } else {
       try {
-        const DESTINO = [-19.7358, -45.2519]; // Bom Despacho - MG
-        const ZOOM_CHEGADA = 14;
+        const DESTINO = [-19.76146489888384, -45.2313819548535]; // Pin fornecido para a Chácara da Vó Elo
+        const ZOOM_CHEGADA = 17;
 
         const map = L.map(mapEl, {
           scrollWheelZoom: false,
@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const marker = L.marker(DESTINO, { icon: pinIcon }).addTo(map);
-        marker.bindPopup('<strong>Larissa &amp; Neto</strong><br />Bom Despacho — MG 💛');
+        marker.bindPopup('<strong>Chácara da Vó Elo</strong><br />Chácara 48 · Alameda dos Jequitibás<br />Condomínio Pica-Pau II 💛');
 
         setTimeout(() => map.invalidateSize(), 300);
 

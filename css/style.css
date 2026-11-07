@@ -675,6 +675,8 @@ img { max-width: 100%; display: block; }
 .detalhe-card.c-amarelo .detalhe-icon { background: var(--amarelo); }
 
 .detalhe-card h3 { margin-bottom: 0.3rem; }
+.venue-address { line-height: 1.55; }
+.venue-address strong { color: var(--navy); font-weight: 500; }
 
 .detalhe-data {
   color: var(--pessego);
@@ -715,6 +717,8 @@ img { max-width: 100%; display: block; }
   margin: 0 auto 2rem;
   font-size: 0.95rem;
 }
+
+.directions-link { margin-top: 1.2rem; }
 
 .map-wrap {
   position: relative;
