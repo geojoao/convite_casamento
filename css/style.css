@@ -879,6 +879,7 @@ img { max-width: 100%; display: block; }
 .photo-strip { padding-top: 3rem; padding-bottom: 3rem; }
 .g-frame { width: 100%; aspect-ratio: 4 / 5; }
 .current-spread { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 52rem; }
+.childhood-spread { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .proposal-strip { padding-block: 4rem; background: var(--navy); }
 .proposal-show {
   position: relative;
@@ -954,6 +955,17 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 860px) {
   .photo-spread { grid-template-columns: repeat(2, minmax(0, 1fr)); --photo-gap: 1rem; }
+
+  /* 5 fotos em 2 colunas: a Larissa de noiva e o Neto de terno ficam no
+     mesmo par, e o judô desce sozinho, centralizado na largura de 1 coluna. */
+  .childhood-spread > :nth-child(4) { order: 3; }
+  .childhood-spread > :nth-child(5) { order: 4; }
+  .childhood-spread > :nth-child(3) {
+    order: 5;
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc((100% - var(--photo-gap)) / 2);
+  }
   .hero-photos .photo-frame { display: block; width: clamp(104px, 30vw, 126px); min-width: 0; }
   .hero-photos .frame-blob-2 { bottom: 9%; left: 4%; }
   .hero-photos .frame-blob-3 { top: 9%; right: 4%; }
