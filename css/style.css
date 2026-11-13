@@ -879,7 +879,28 @@ img { max-width: 100%; display: block; }
 .photo-strip { padding-top: 3rem; padding-bottom: 3rem; }
 .g-frame { width: 100%; aspect-ratio: 4 / 5; }
 .current-spread { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 52rem; }
-.childhood-spread { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+/* Infância: Neto sempre à esquerda, Larissa sempre à direita.
+   No PC, layout espelhado: terno e noiva grandes no centro, os outros
+   pares (palhaços em cima, judô/Natal embaixo) nas pontas, na mesma altura. */
+.childhood-spread img[src*="neto-judo"] { object-position: center 12%; }
+
+@media (min-width: 861px) {
+  .childhood-spread {
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-template-areas:
+      "n1 nb lb l1"
+      "n2 nb lb l2";
+    max-width: 64rem;
+  }
+  .childhood-spread > :nth-child(1) { grid-area: n1; }
+  .childhood-spread > :nth-child(2) { grid-area: l1; }
+  .childhood-spread > :nth-child(3) { grid-area: n2; }
+  .childhood-spread > :nth-child(4) { grid-area: l2; }
+  .childhood-spread > :nth-child(5) { grid-area: nb; }
+  .childhood-spread > :nth-child(6) { grid-area: lb; }
+  .childhood-spread > :nth-child(n+5) { aspect-ratio: auto; }
+  .childhood-spread > :nth-child(n+5) img { position: absolute; inset: 0; }
+}
 .proposal-strip { padding-block: 4rem; background: var(--navy); }
 .proposal-show {
   position: relative;
@@ -956,16 +977,6 @@ img { max-width: 100%; display: block; }
 @media (max-width: 860px) {
   .photo-spread { grid-template-columns: repeat(2, minmax(0, 1fr)); --photo-gap: 1rem; }
 
-  /* 5 fotos em 2 colunas: a Larissa de noiva e o Neto de terno ficam no
-     mesmo par, e o judô desce sozinho, centralizado na largura de 1 coluna. */
-  .childhood-spread > :nth-child(4) { order: 3; }
-  .childhood-spread > :nth-child(5) { order: 4; }
-  .childhood-spread > :nth-child(3) {
-    order: 5;
-    grid-column: 1 / -1;
-    justify-self: center;
-    width: calc((100% - var(--photo-gap)) / 2);
-  }
   .hero-photos .photo-frame { display: block; width: clamp(104px, 30vw, 126px); min-width: 0; }
   .hero-photos .frame-blob-2 { bottom: 9%; left: 4%; }
   .hero-photos .frame-blob-3 { top: 9%; right: 4%; }
