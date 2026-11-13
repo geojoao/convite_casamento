@@ -362,14 +362,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ---- Envio do formulário RSVP -----------------------------------
-  // Por enquanto o envio é apenas simulado localmente.
-  // Quando a integração com o Google Forms for feita, trocar este
-  // handler por um fetch(action, { method: 'POST', mode: 'no-cors', body: formData }).
+  // Envia para o Google Forms (action do <form>). O Google não libera CORS,
+  // então o POST vai em modo 'no-cors': a resposta é opaca e não dá para
+  // ler se gravou. Só um erro de rede (sem internet) cai no catch.
   const rsvpForm = document.getElementById('rsvpForm');
   const formFeedback = document.getElementById('formFeedback');
 
   if (rsvpForm) {
-    rsvpForm.addEventListener('submit', (event) => {
+    rsvpForm.addEventListener('submit', async (event) => {
       event.preventDefault();
 
       if (!rsvpForm.checkValidity()) {
@@ -380,8 +380,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const submitBtn = rsvpForm.querySelector('button[type="submit"]');
       submitBtn.disabled = true;
       submitBtn.textContent = 'Enviando...';
+      formFeedback.textContent = '';
 
-      setTimeout(() => {
+      try {
+        await fetch(rsvpForm.action, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: new URLSearchParams(new FormData(rsvpForm)),
+        });
+
         submitBtn.textContent = 'Enviado ✓';
         formFeedback.textContent = 'Obrigado por confirmar! Mal podemos esperar para celebrar com você. 💛';
         rsvpForm.reset();
@@ -390,7 +397,12 @@ document.addEventListener('DOMContentLoaded', () => {
           submitBtn.disabled = false;
           submitBtn.textContent = 'Enviar confirmação';
         }, 2500);
-      }, 700);
+      } catch (err) {
+        console.error('Falha ao enviar confirmação:', err);
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar confirmação';
+        formFeedback.textContent = 'Não conseguimos enviar agora. Confira sua internet e tente de novo, por favor.';
+      }
     });
   }
 });

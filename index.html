@@ -347,24 +347,22 @@
   <p class="rsvp-sub reveal">Por favor, confirme até 25 de fevereiro de 2027.</p>
   <p class="rsvp-note reveal">💌 Convite individual — cada pessoa querida recebe o seu próprio, então não é possível incluir acompanhantes.</p>
 
-  <form id="rsvpForm" class="rsvp-form reveal" novalidate>
+  <form id="rsvpForm" class="rsvp-form reveal" action="https://docs.google.com/forms/d/e/1FAIpQLSemHq1ylt6VOIzqhiC3YsitZ7cLPTkSiRwFEa9KxJXPrrJ6qg/formResponse" method="POST" novalidate>
     <!--
-      TODO (fase de integração com Google Forms):
-      1. Trocar o "action" abaixo pela URL .../formResponse do Google Forms.
-      2. Trocar os atributos "name" dos campos pelos "entry.XXXXXXXXX" reais do formulário
-         (incluindo o campo oculto de coordenadas, no fim do formulário).
-      3. Enviar via fetch(action, { method: "POST", mode: "no-cors", body: formData }).
-      Por enquanto o envio é simulado localmente (ver js/main.js).
+      Respostas vão para o Google Forms "Convite de casamento":
+      https://docs.google.com/forms/d/e/1FAIpQLSemHq1ylt6VOIzqhiC3YsitZ7cLPTkSiRwFEa9KxJXPrrJ6qg/viewform
+      Cada "name" abaixo é o entry.ID da pergunta correspondente no formulário.
+      O envio é feito em js/main.js.
     -->
     <div class="field">
       <label for="nome">Nome completo</label>
-      <input type="text" id="nome" name="entry.nome" placeholder="Seu nome" required />
+      <input type="text" id="nome" name="entry.860312011" placeholder="Seu nome" required />
     </div>
 
     <div class="field">
       <label for="cidade">Cidade onde mora</label>
       <div class="location-input-row">
-        <input type="text" id="cidade" name="entry.cidade" placeholder="Ex: Belo Horizonte, MG" autocomplete="address-level2" />
+        <input type="text" id="cidade" name="entry.1967268410" placeholder="Ex: Belo Horizonte, MG" autocomplete="address-level2" />
         <button type="button" class="location-button" id="useCurrentLocation" aria-label="Usar localização atual do celular" title="Usar localização atual">
           <span aria-hidden="true">⌖</span>
           <span>Usar GPS</span>
@@ -375,25 +373,25 @@
 
     <div class="field">
       <label for="presenca">Você vai comparecer?</label>
-      <select id="presenca" name="entry.presenca" required>
+      <select id="presenca" name="entry.1094298767" required>
         <option value="" disabled selected>Selecione uma opção</option>
-        <option value="sim">Sim, estarei lá! 🎉</option>
-        <option value="nao">Não poderei ir 😔</option>
+        <option value="Sim">Sim, estarei lá! 🎉</option>
+        <option value="Não">Não poderei ir 😔</option>
       </select>
     </div>
 
     <div class="field">
       <label for="restricao">Alguma restrição alimentar?</label>
-      <input type="text" id="restricao" name="entry.restricao" placeholder="Ex: vegetariano, alergias, etc. (opcional)" />
+      <input type="text" id="restricao" name="entry.1555682521" placeholder="Ex: vegetariano, alergias, etc. (opcional)" />
     </div>
 
     <div class="field">
       <label for="mensagem">Deixe uma mensagem para os noivos</label>
-      <textarea id="mensagem" name="entry.mensagem" rows="3" placeholder="Escreva algo com carinho... (opcional)"></textarea>
+      <textarea id="mensagem" name="entry.810007324" rows="3" placeholder="Escreva algo com carinho... (opcional)"></textarea>
     </div>
 
     <!-- Coordenadas aproximadas por IP ou localização precisa após autorização. -->
-    <input type="hidden" id="geoCoordenadas" name="entry.coordenadas" value="" />
+    <input type="hidden" id="geoCoordenadas" name="entry.1947238423" value="" />
 
     <button type="submit" class="btn btn-primary btn-block">Enviar confirmação</button>
 
